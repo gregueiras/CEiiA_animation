@@ -79,6 +79,12 @@ function getCache() {
   return JSON.parse(localStorage.getItem(CACHE));
 }
 
+function keyPressed() {
+  if (keyCode === BACKSPACE) {
+    ellipses = ellipses.slice(0, ellipses.length - 1)
+  }
+}
+
 function mousePressed(event) {
   if (mouseButton === CENTER || (mouseButton === RIGHT && event.shiftKey)) {
     console.log("Path Loaded");
