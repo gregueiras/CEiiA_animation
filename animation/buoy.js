@@ -38,10 +38,10 @@ class Buoy {
           const x = (nextX - prevX) * partial;
           const y = (nextY - prevY) * partial;
 
-          const v1 = createVector(this.x, this.y);
-          const v2 = createVector(x, y);
+          const deltaY = prevY - nextY;
+          const deltaX = nextX - prevX;
+          this.dir = Math.atan2(deltaY, deltaX)
 
-          this.dir = v1.angleBetween(v2);
           this.x = prevX + x;
           this.y = prevY + y;
           this.engine = engine;
@@ -51,21 +51,18 @@ class Buoy {
   }
 
   draw() {
-    //fill(255, 255, 255);
-    //ellipse(this.x, this.y, RADIUS);
+    push();
 
-    image(buoyImage, this.x, this.y)
-    
+    translate(this.x, this.y);
+    rotate(PI - this.dir);
+    imageMode(CENTER);
+
     if (this.engine) {
-      image(buoyImageMoving, this.x, this.y)
-      /*
-      fill(255, 125, 50);
-      ellipse(
-        this.x + cos(this.dir) * 25,
-        this.y + sin(this.dir) * 25,
-        RADIUS / 2
-      );
-      */
+      image(buoyImageMoving, 0, 0);
+    } else {
+      image(buoyImage, 0, 0);
     }
+
+    pop();
   }
 }
