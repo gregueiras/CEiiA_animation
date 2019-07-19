@@ -1,6 +1,3 @@
-let buoyImage;
-let buoyImageMoving;
-
 class Buoy {
   constructor(path) {
     this.pos = { x: path[0].x, y: path[0].y };
@@ -14,8 +11,11 @@ class Buoy {
     this.engine = false;
     this.maxTime = 0;
 
-    buoyImage = loadImage("assets/buoy.png");
-    buoyImageMoving = loadImage("assets/buoyMoving.png");
+    this.partial = 0;
+    this.lastRotation = null;
+
+    this.buoyImage = loadImage("assets/buoy.png");
+    this.buoyImageMoving = loadImage("assets/buoyMoving.png");
   }
 
   update(newTime) {
@@ -34,13 +34,17 @@ class Buoy {
         ];
 
         if (this.time >= prevT && this.time < nextT) {
-          const partial = map(this.time, prevT, nextT, 0, 1);
-          const x = (nextX - prevX) * partial;
-          const y = (nextY - prevY) * partial;
+          this.partial = map(this.time, prevT, nextT, 0, 1);
+          const x = (nextX - prevX) * this.partial;
+          const y = (nextY - prevY) * this.partial;
 
           const deltaY = prevY - nextY;
           const deltaX = nextX - prevX;
-          this.dir = Math.atan2(deltaY, deltaX)
+          this.dir = Math.atan2(deltaY, deltaX);
+
+          if (this.lastRotation === null) {
+            this.lastRotation = this.dir;
+          }
 
           this.x = prevX + x;
           this.y = prevY + y;
@@ -51,6 +55,20 @@ class Buoy {
   }
 
   draw() {
+    const part = this.partial <= 0.25 ? this.partial * 4 : 1;
+    let rot = this.dir;
+
+    if (this.lastRotation && this.lastRotation !== this.dir) {
+      rot =
+        (this.dir > this.lastRotation
+          ? this.lastRotation - this.dir
+          : this.dir - this.lastRotation) * part;
+      
+      if (part === 1) {
+        this.lastRotation = this.dir;
+      }
+    }
+
     push();
 
     translate(this.x, this.y);
@@ -58,9 +76,9 @@ class Buoy {
     imageMode(CENTER);
 
     if (this.engine) {
-      image(buoyImageMoving, 0, 0);
+      image(this.buoyImageMoving, 0, 0);
     } else {
-      image(buoyImage, 0, 0);
+      image(this.buoyImage, 0, 0);
     }
 
     pop();
