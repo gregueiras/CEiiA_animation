@@ -1,6 +1,7 @@
 import React from "react"
 import Constants from "style/Constants"
-import dataO2P from ".  /data1/O2P";
+import dataO2P from "./data1/O2P"
+import dataMGL from "./data1/mgL"
 
 const O2Data = [
   {
@@ -114,6 +115,8 @@ const charts = [
       </>
     ),
     data: dataO2P,
+    yTitle: "%",
+    title: "Oxygen Percentage",
   },
   {
     name: (
@@ -121,6 +124,9 @@ const charts = [
         O<sub>2</sub> mg/L
       </>
     ),
+    data: dataMGL,
+    yTitle: "mg/L",
+    title: "Oxygen (mg/L)",
   },
   {
     name: "Salinity",

@@ -7,13 +7,13 @@ import "react-tabs/style/react-tabs.css"
 
 class Monitor extends React.Component {
   render() {
-    const { charts, o2, misc } = this.props
+    const { charts, o2, misc, location } = this.props
 
     return (
       <div style={monitorStyle}>
         <div style={panelHeaderStyle}>
-          <h2 style={headerStyle}>S. Miguel</h2>
-          <h4 style={headerStyle}>Last Update: 12:40</h4>
+          <h2 style={headerStyle}>{location}</h2>
+          <h5 style={{...headerStyle, fontWeight: 400}}>Last Update: 12:40</h5>
         </div>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           <div style={{ width: "50%" }}>
@@ -50,12 +50,16 @@ class Monitor extends React.Component {
             </TabList>
 
             {charts &&
-              charts.map(({ data }, index) => {
+              charts.map(({ data, yTitle, title }, index) => {
                 console.log(data)
                 if (data) {
                   return (
-                    <TabPanel style={{marginBottom: "1em",}} key={index}>
-                      <Chart title="Oxygen Saturation" xTitle="%" data={data}/>
+                    <TabPanel key={index}>
+                      <Chart
+                        title={title}
+                        yTitle={yTitle}
+                        data={data}
+                      />
                     </TabPanel>
                   )
                 } else {
@@ -76,7 +80,6 @@ const headerStyle = {
 const panelHeaderStyle = {
   paddingLeft: "0.5em",
   paddingRight: "0.5em",
-  marginTop: "1em",
   background: Constants.darkBackground,
   display: "flex",
   justifyContent: "space-between",
@@ -86,6 +89,8 @@ const monitorStyle = {
   fontFamily: Constants.fontFamily,
   background: Constants.lightBackground,
   color: Constants.whiteText,
+  padding: "1em",
+  paddingTop: "1em",
 }
 
 export default Monitor

@@ -3,11 +3,11 @@ const fs = require("fs");
 function generateData(dataNumber) {
   const data = [];
   let lastDir = 1;
-  data.push([1565017570060, 85]);
+  data.push([1565017570060, 7.1]);
   for (let i = 0; i < 1000; i++) {
     const [oldTime, oldVal] = data[i];
-    let inc = (lastDir * Math.random()) / 5;
-    if (Math.random() > 0.8) {
+    let inc = (lastDir * Math.random()) / 10;
+    if (Math.random() > 0.5) {
       lastDir *= -1;
     }
     let newVal = oldVal + inc;
@@ -28,5 +28,4 @@ function generateData(dataNumber) {
   );
 }
 
-generateData(0);
-generateData(1);
+generateData("mg");

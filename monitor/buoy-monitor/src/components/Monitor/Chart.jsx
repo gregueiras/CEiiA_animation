@@ -8,13 +8,12 @@ import {
   YAxis,
   Title,
   Subtitle,
-  Legend,
   LineSeries,
   Tooltip,
 } from "react-jsx-highcharts"
 
-const App = ({ title, xTitle, yTitle, data }) => (
-  <div className="app">
+const App = ({ title, xTitle, yTitle, data, style }) => (
+  <div className="app" style={style}>
     <HighchartsChart>
       <Chart zoomType="x" type="datetime" />
       <Title>{title}</Title>
@@ -25,9 +24,7 @@ const App = ({ title, xTitle, yTitle, data }) => (
           : "Pinch the chart to zoom in"}
       </Subtitle>
 
-      <Legend layout="vertical" align="right" verticalAlign="middle" />
-
-      <Tooltip valueSuffix=" m/s" shared />
+      <Tooltip valueSuffix={` ${yTitle}`} shared />
 
       <XAxis type="datetime">
         {xTitle && <XAxis.Title>{xTitle}</XAxis.Title>}
@@ -35,7 +32,7 @@ const App = ({ title, xTitle, yTitle, data }) => (
 
       <YAxis>
         <YAxis.Title>{yTitle}</YAxis.Title>
-        <LineSeries name="Test" data={data}/>
+        <LineSeries data={data}/>
       </YAxis>
 
     </HighchartsChart>
