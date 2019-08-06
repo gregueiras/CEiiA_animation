@@ -1,23 +1,9 @@
 import React from "react"
 import { Responsive, WidthProvider } from "react-grid-layout"
+import Monitor from "src/components/Monitor"
+import { O2, Misc, charts } from "data/dataB1"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
-
-const divStyle1 = {
-  background: "#ABC",
-}
-
-const divStyle2 = {
-  background: "#856",
-}
-
-const divStyle3 = {
-  background: "#085",
-}
-
-const divStyle4 = {
-  background: "#008",
-}
 
 class MyGrid extends React.Component {
   render() {
@@ -26,8 +12,6 @@ class MyGrid extends React.Component {
       lg: lgLayout,
       md: mdLayout,
       sm: smLayout,
-      xs: xsLayout,
-      xxs: xxsLayout,
     }
     return (
       <ResponsiveGridLayout
@@ -36,23 +20,40 @@ class MyGrid extends React.Component {
         rowHeight={30}
         width={1400}
         margin={[5, 7]}
-        breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-        cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+        breakpoints={{ lg: 1200, md: 996, sm: 768 }}
+        cols={{ lg: 3, md: 2, sm: 1 }}
       >
-        <div key="a" style={divStyle1}>
-          a
+        <div key="a">
+          <Monitor
+            charts={charts}
+            o2={O2}
+            misc={Misc}
+            location="S. Miguel"
+          />
         </div>
-        <div key="b" style={divStyle2}>
-          b
+        <div key="b">
+          <Monitor
+            charts={charts}
+            o2={O2}
+            misc={Misc}
+            location="S. Miguel"
+          />
         </div>
-        <div key="c" style={divStyle3}>
-          c
+        <div key="c">
+          <Monitor
+            charts={charts}
+            o2={O2}
+            misc={Misc}
+            location="S. Miguel"
+          />
         </div>
-        <div key="d" style={divStyle4}>
-          d
-        </div>
-        <div key="e" style={divStyle3}>
-          c
+        <div key="d">
+          <Monitor
+            charts={charts}
+            o2={O2}
+            misc={Misc}
+            location="S. Miguel"
+          />
         </div>
       </ResponsiveGridLayout>
     )
@@ -60,38 +61,24 @@ class MyGrid extends React.Component {
 }
 
 const lgLayout = [
-  { i: "a", x: 0, y: 0, w: 4, h: 10 },
-  { i: "b", x: 4, y: 0, w: 4, h: 10 },
-  { i: "c", x: 8, y: 0, w: 4, h: 10 },
-  { i: "d", x: 0, y: 1, w: 4, h: 10 },
+  { i: "a", x: 0, y: 0, w: 1, h: 23 },
+  { i: "b", x: 1, y: 0, w: 1, h: 23 },
+  { i: "c", x: 2, y: 0, w: 1, h: 23 },
+  { i: "d", x: 0, y: 1, w: 1, h: 23 },
 ]
 
 const mdLayout = [
-  { i: "a", x: 0, y: 0, w: 5, h: 5 },
-  { i: "b", x: 5, y: 0, w: 5, h: 5 },
-  { i: "c", x: 0, y: 1, w: 5, h: 5 },
-  { i: "d", x: 5, y: 1, w: 5, h: 5 },
+  { i: "a", x: 0, y: 0, w: 1, h: 23 },
+  { i: "b", x: 1, y: 0, w: 1, h: 23 },
+  { i: "c", x: 0, y: 24, w: 1, h: 23 },
+  { i: "d", x: 1, y: 24, w: 1, h: 23 },
 ]
 
 const smLayout = [
-  { i: "a", x: 0, y: 0, w: 4, h: 5 },
-  { i: "b", x: 4, y: 0, w: 4, h: 5 },
-  { i: "c", x: 8, y: 0, w: 4, h: 5 },
-  { i: "d", x: 0, y: 0, w: 4, h: 5 },
-]
-
-const xsLayout = [
-  { i: "a", x: 0, y: 0, w: 4, h: 5 },
-  { i: "b", x: 4, y: 0, w: 4, h: 5 },
-  { i: "c", x: 8, y: 0, w: 4, h: 5 },
-  { i: "d", x: 0, y: 0, w: 4, h: 5 },
-]
-
-const xxsLayout = [
-  { i: "a", x: 0, y: 0, w: 4, h: 5 },
-  { i: "b", x: 4, y: 0, w: 4, h: 5 },
-  { i: "c", x: 8, y: 0, w: 4, h: 5 },
-  { i: "d", x: 0, y: 0, w: 4, h: 5 },
+  { i: "a", x: 0, y: 0, w: 1, h: 23 },
+  { i: "b", x: 0, y: 1, w: 1, h: 23 },
+  { i: "c", x: 0, y: 2, w: 1, h: 23 },
+  { i: "d", x: 0, y: 3, w: 1, h: 23 },
 ]
 
 export default MyGrid

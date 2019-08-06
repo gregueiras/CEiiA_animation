@@ -7,7 +7,6 @@ import {
   XAxis,
   YAxis,
   Title,
-  Subtitle,
   LineSeries,
   Tooltip,
 } from "react-jsx-highcharts"
@@ -87,14 +86,8 @@ class App extends Component {
     return (
       <div className="app" style={style}>
         <HighchartsChart>
-          <Chart zoomType="x" />
+          <Chart zoomType="x" type="datetime" />
           <Title>{title}</Title>
-
-          <Subtitle>
-            {document.ontouchstart === undefined
-              ? "Click and drag in the plot area to zoom in"
-              : "Pinch the chart to zoom in"}
-          </Subtitle>
 
           <Tooltip valueSuffix={` ${yTitle}`} shared />
 

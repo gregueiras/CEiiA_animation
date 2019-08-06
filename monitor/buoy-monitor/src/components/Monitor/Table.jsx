@@ -2,6 +2,7 @@ import React from "react"
 import ReactTable from "react-table"
 import "react-table/react-table.css"
 import { ReactTableDefaults } from "react-table"
+import Constants from "style/Constants"
 
 class Table extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class Table extends React.Component {
           style={style}
           pageSize={data.length}
           defaultColumn={columnStyle}
+          resizable={false}
         />{" "}
       </div>
     )
@@ -32,12 +34,14 @@ const columnStyle = {
     borderLeft: 0,
     borderRight: 0,
     color: "rgb(204, 204, 204)",
+    fontSize: Constants.smallText,
   },
   style: {
     borderLeft: 0,
     borderRight: 0,
     borderBottomColor: "rgb(204, 204, 204)",
     borderTopColor: "rgb(204, 204, 204)",
+    fontSize: Constants.smallText,
   },
 }
 

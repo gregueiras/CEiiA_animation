@@ -3,6 +3,13 @@ import Constants from "style/Constants"
 import dataO2P from "./data1/O2P"
 import dataMGL from "./data1/mgL"
 
+const cellStyle = {
+  style: {
+    textAlign: Constants.textAlign,
+  },
+  width: Constants.cellWidth,
+}
+
 const O2Data = [
   {
     name: "Max",
@@ -30,7 +37,9 @@ const O2Schema = [
     accessor: "name", // String-based value accessors!
     style: {
       color: Constants.lightText,
+      fontSize: Constants.smallText,
     },
+    width: Constants.cellWidth,
   },
   {
     Header: (
@@ -39,6 +48,7 @@ const O2Schema = [
       </>
     ),
     accessor: "o2P",
+    ...cellStyle,
   },
   {
     Header: (
@@ -47,10 +57,12 @@ const O2Schema = [
       </>
     ),
     accessor: "o2mg",
+    ...cellStyle,
   },
   {
     Header: "Hypoxia",
     accessor: "hypoxia",
+    ...cellStyle,
   },
 ]
 
@@ -81,19 +93,24 @@ const MiscSchema = [
     accessor: "name", // String-based value accessors!,
     style: {
       color: Constants.lightText,
+      fontSize: Constants.smallText,
     },
+    width: Constants.cellWidth,
   },
   {
     Header: "WF m/s",
     accessor: "WFms",
+    ...cellStyle,
   },
   {
     Header: "CT ‰",
     accessor: "CT",
+    ...cellStyle,
   },
   {
     Header: "ºC",
     accessor: "Temp",
+    ...cellStyle,
   },
 ]
 

@@ -7,10 +7,10 @@ import "react-tabs/style/react-tabs.css"
 
 class Monitor extends React.Component {
   render() {
-    const { charts, o2, misc, location } = this.props
+    const { charts, o2, misc, location, style } = this.props
 
     return (
-      <div style={monitorStyle}>
+      <div style={{ ...monitorStyle, ...style }}>
         <div style={panelHeaderStyle}>
           <h2 style={headerStyle}>{location}</h2>
           <h5 style={{ ...headerStyle, fontWeight: 400 }}>
@@ -48,7 +48,11 @@ class Monitor extends React.Component {
           <Tabs>
             <TabList>
               {charts &&
-                charts.map(({ name }, index) => <Tab key={index}>{name}</Tab>)}
+                charts.map(({ name }, index) => (
+                  <Tab key={index} style={{ fontSize: Constants.mediumText }}>
+                    {name}
+                  </Tab>
+                ))}
             </TabList>
 
             {charts &&
@@ -57,7 +61,12 @@ class Monitor extends React.Component {
                 if (data) {
                   return (
                     <TabPanel key={index}>
-                      <MyChart title={title} yTitle={yTitle} data={data} />
+                      <MyChart
+                        style={style}
+                        title={title}
+                        yTitle={yTitle}
+                        data={data}
+                      />
                     </TabPanel>
                   )
                 } else {
