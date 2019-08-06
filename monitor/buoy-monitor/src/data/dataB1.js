@@ -1,4 +1,5 @@
 import React from "react"
+import Constants from "style/Constants"
 
 const O2Data = [
   {
@@ -25,11 +26,14 @@ const O2Schema = [
   {
     Header: "",
     accessor: "name", // String-based value accessors!
+    style: {
+      color: Constants.lightText,
+    },
   },
   {
     Header: (
       <>
-        O<sub>2</sub>%
+        O<sub>2</sub> %
       </>
     ),
     accessor: "o2P",
@@ -37,7 +41,7 @@ const O2Schema = [
   {
     Header: (
       <>
-        O<sub>2</sub>mg/L
+        O<sub>2</sub> mg/L
       </>
     ),
     accessor: "o2mg",
@@ -72,7 +76,10 @@ const MiscData = [
 const MiscSchema = [
   {
     Header: "",
-    accessor: "name", // String-based value accessors!
+    accessor: "name", // String-based value accessors!,
+    style: {
+      color: Constants.lightText,
+    },
   },
   {
     Header: "WF m/s",
@@ -98,4 +105,30 @@ const Misc = {
   schema: MiscSchema,
 }
 
-export { O2, Misc }
+const charts = [
+  {
+    name: (
+      <>
+        O<sub>2</sub> %
+      </>
+    ),
+  },
+  {
+    name: (
+      <>
+        O<sub>2</sub> mg/L
+      </>
+    ),
+  },
+  {
+    name: "Salinity",
+  },
+  {
+    name: "Current Speed",
+  },
+  {
+    name: "Temperature",
+  },
+]
+
+export { O2, Misc, charts }

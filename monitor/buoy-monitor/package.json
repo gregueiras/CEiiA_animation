@@ -19,7 +19,8 @@
     "react-dom": "^16.8.6",
     "react-grid-layout": "^0.16.6",
     "react-leaflet": "^2.4.0",
-    "react-table": "^6.10.0"
+    "react-table": "^6.10.0",
+    "react-tabs": "^3.0.0"
   },
   "devDependencies": {
     "gatsby-plugin-root-import": "^2.0.5",
