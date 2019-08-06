@@ -1,0 +1,101 @@
+import React from "react"
+
+const O2Data = [
+  {
+    name: "Max",
+    o2P: "90.1",
+    o2mg: "7.7",
+    hypoxia: "3.3",
+  },
+  {
+    name: "Avg",
+    o2P: "85.6",
+    o2mg: "7.1",
+    hypoxia: "2.4",
+  },
+  {
+    name: "Min",
+    o2P: "81.0",
+    o2mg: "6.6",
+    hypoxia: "1.6",
+  },
+]
+
+const O2Schema = [
+  {
+    Header: "",
+    accessor: "name", // String-based value accessors!
+  },
+  {
+    Header: (
+      <>
+        O<sub>2</sub>%
+      </>
+    ),
+    accessor: "o2P",
+  },
+  {
+    Header: (
+      <>
+        O<sub>2</sub>mg/L
+      </>
+    ),
+    accessor: "o2mg",
+  },
+  {
+    Header: "Hypoxia",
+    accessor: "hypoxia",
+  },
+]
+
+const MiscData = [
+  {
+    name: "Max",
+    WFms: "2.2",
+    CT: "25.8",
+    Temp: "19.7",
+  },
+  {
+    name: "Avg",
+    WFms: "2.0",
+    CT: "15.5",
+    Temp: "14.0",
+  },
+  {
+    name: "Min",
+    WFms: "1.4",
+    CT: "7.4",
+    Temp: "4.7",
+  },
+]
+
+const MiscSchema = [
+  {
+    Header: "",
+    accessor: "name", // String-based value accessors!
+  },
+  {
+    Header: "WF m/s",
+    accessor: "WFms",
+  },
+  {
+    Header: "CT ‰",
+    accessor: "CT",
+  },
+  {
+    Header: "ºC",
+    accessor: "Temp",
+  },
+]
+
+const O2 = {
+  data: O2Data,
+  schema: O2Schema,
+}
+
+const Misc = {
+  data: MiscData,
+  schema: MiscSchema,
+}
+
+export { O2, Misc }
