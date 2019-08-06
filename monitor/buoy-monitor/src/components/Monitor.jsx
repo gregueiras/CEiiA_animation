@@ -1,13 +1,14 @@
 import React from "react"
-import Table from "./Monitor/Table"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+import Table from "./Monitor/Table"
+import Chart from "./Monitor/Chart"
 import Constants from "style/Constants"
 import "react-tabs/style/react-tabs.css"
 
 class Monitor extends React.Component {
   render() {
-    const { charts, o2, misc } = this.props;
-    
+    const { charts, o2, misc } = this.props
+
     return (
       <div style={monitorStyle}>
         <div style={panelHeaderStyle}>
@@ -31,24 +32,36 @@ class Monitor extends React.Component {
             </Tabs>
           </div>
           <div style={{ width: "50%" }}>
-            { o2 && <Table data={o2.data} schema={o2.schema} />}
-            { !o2 && <p>No O<sub>2</sub> data</p>}
-            { misc && <Table data={misc.data} schema={misc.schema} />}
-            { !misc && <p>No miscellaneous data</p>}
+            {o2 && <Table data={o2.data} schema={o2.schema} />}
+            {!o2 && (
+              <p>
+                No O<sub>2</sub> data
+              </p>
+            )}
+            {misc && <Table data={misc.data} schema={misc.schema} />}
+            {!misc && <p>No miscellaneous data</p>}
           </div>
         </div>
         <div>
           <Tabs>
             <TabList>
-              {charts && charts.map(({ name }, index) => (<Tab key={index}>{name}</Tab>)) }
+              {charts &&
+                charts.map(({ name }, index) => <Tab key={index}>{name}</Tab>)}
             </TabList>
 
-            <TabPanel>
-              <h2>Any content 1</h2>
-            </TabPanel>
-            <TabPanel>
-              <h2>Any content 2</h2>
-            </TabPanel>
+            {charts &&
+              charts.map(({ data }, index) => {
+                console.log(data)
+                if (data) {
+                  return (
+                    <TabPanel style={{marginBottom: "1em",}} key={index}>
+                      <Chart title="Oxygen Saturation" xTitle="%" data={data}/>
+                    </TabPanel>
+                  )
+                } else {
+                  return <TabPanel key={index}></TabPanel>
+                }
+              })}
           </Tabs>{" "}
         </div>
       </div>

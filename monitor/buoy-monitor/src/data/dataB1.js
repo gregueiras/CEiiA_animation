@@ -1,5 +1,6 @@
 import React from "react"
 import Constants from "style/Constants"
+import dataO2P from ".  /data1/O2P";
 
 const O2Data = [
   {
@@ -112,6 +113,7 @@ const charts = [
         O<sub>2</sub> %
       </>
     ),
+    data: dataO2P,
   },
   {
     name: (
