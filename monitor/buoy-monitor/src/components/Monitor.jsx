@@ -1,7 +1,7 @@
 import React from "react"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import Table from "./Monitor/Table"
-import Chart from "./Monitor/Chart"
+import MyChart from "./Monitor/MyChart"
 import Constants from "style/Constants"
 import "react-tabs/style/react-tabs.css"
 
@@ -13,7 +13,9 @@ class Monitor extends React.Component {
       <div style={monitorStyle}>
         <div style={panelHeaderStyle}>
           <h2 style={headerStyle}>{location}</h2>
-          <h5 style={{...headerStyle, fontWeight: 400}}>Last Update: 12:40</h5>
+          <h5 style={{ ...headerStyle, fontWeight: 400 }}>
+            Last Update: 12:40
+          </h5>
         </div>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           <div style={{ width: "50%" }}>
@@ -55,11 +57,7 @@ class Monitor extends React.Component {
                 if (data) {
                   return (
                     <TabPanel key={index}>
-                      <Chart
-                        title={title}
-                        yTitle={yTitle}
-                        data={data}
-                      />
+                      <MyChart title={title} yTitle={yTitle} data={data} />
                     </TabPanel>
                   )
                 } else {
