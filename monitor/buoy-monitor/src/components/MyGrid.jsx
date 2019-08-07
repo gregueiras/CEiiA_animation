@@ -22,38 +22,19 @@ class MyGrid extends React.Component {
         margin={[5, 7]}
         breakpoints={{ lg: 1200, md: 996, sm: 768 }}
         cols={{ lg: 3, md: 2, sm: 1 }}
+        draggableCancel=".chart, button,.react-tabs"
       >
         <div key="a">
-          <Monitor
-            charts={charts}
-            o2={O2}
-            misc={Misc}
-            location="S. Miguel"
-          />
+          <Monitor charts={charts} o2={O2} misc={Misc} location="S. Miguel" />
         </div>
         <div key="b">
-          <Monitor
-            charts={charts}
-            o2={O2}
-            misc={Misc}
-            location="S. Miguel"
-          />
+          <Monitor charts={charts} o2={O2} misc={Misc} location="S. Miguel" />
         </div>
         <div key="c">
-          <Monitor
-            charts={charts}
-            o2={O2}
-            misc={Misc}
-            location="S. Miguel"
-          />
+          <Monitor charts={charts} o2={O2} misc={Misc} location="S. Miguel" />
         </div>
         <div key="d">
-          <Monitor
-            charts={charts}
-            o2={O2}
-            misc={Misc}
-            location="S. Miguel"
-          />
+          <Monitor charts={charts} o2={O2} misc={Misc} location="S. Miguel" />
         </div>
       </ResponsiveGridLayout>
     )

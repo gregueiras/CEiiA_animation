@@ -21,8 +21,20 @@ class Monitor extends React.Component {
           <div style={{ width: "50%" }}>
             <Tabs>
               <TabList>
-                <Tab>Map</Tab>
-                <Tab>Feeding</Tab>
+                <Tab
+                  style={{
+                    fontSize: Constants.mediumText,
+                  }}
+                >
+                  Map
+                </Tab>
+                <Tab
+                  style={{
+                    fontSize: Constants.mediumText,
+                  }}
+                >
+                  Feeding
+                </Tab>
               </TabList>
 
               <TabPanel>

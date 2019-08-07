@@ -17,6 +17,7 @@ class App extends Component {
     this.updateLiveData = this.updateLiveData.bind(this)
     this.handleStartLiveUpdate = this.handleStartLiveUpdate.bind(this)
     this.handleStopLiveUpdate = this.handleStopLiveUpdate.bind(this)
+    this.chart = null
 
     this.state = {
       data: props.data,
@@ -76,16 +77,13 @@ class App extends Component {
     })
   }
 
-  componentDidUpdate() {
-    console.log("update")
-  }
-
   render() {
+    console.log("render")
     const { liveUpdate, title, xTitle, yTitle, data, style } = this.state
 
     return (
       <div className="app" style={style}>
-        <HighchartsChart>
+        <HighchartsChart oneToOne={true}>
           <Chart zoomType="x" type="datetime" />
           <Title>{title}</Title>
 
