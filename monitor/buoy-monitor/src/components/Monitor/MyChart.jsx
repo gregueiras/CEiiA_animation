@@ -39,7 +39,6 @@ class App extends Component {
 
   updateLiveData() {
     function addDataPoint(data) {
-      console.log(data)
       if (data) {
         const [lastTime, lastValue] = data[data.length - 1]
         const [last2Time, last2Value] = data[data.length - 2]
@@ -50,8 +49,9 @@ class App extends Component {
         newPoint.push(lastTime + (lastTime - last2Time))
         newPoint.push(lastValue + (lastValue - last2Value) * inc)
 
-        data.push(newPoint)
-        return data
+        const newData = data.slice(0) // Clone
+        newData.push(newPoint)
+        return newData
       }
     }
 
@@ -78,7 +78,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("render")
     const { liveUpdate, title, xTitle, yTitle, data, style } = this.state
 
     return (

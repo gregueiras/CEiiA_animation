@@ -2,6 +2,7 @@ import React from "react"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import Table from "./Monitor/Table"
 import MyChart from "./Monitor/MyChart"
+import MyMap from "./Monitor/MyMap"
 import Constants from "style/Constants"
 import "react-tabs/style/react-tabs.css"
 
@@ -17,7 +18,7 @@ class Monitor extends React.Component {
             Last Update: 12:40
           </h5>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div style={{ display: "flex", justifyContent: "space-evenly", marginBottom: "1em" }}>
           <div style={{ width: "50%" }}>
             <Tabs>
               <TabList>
@@ -37,8 +38,8 @@ class Monitor extends React.Component {
                 </Tab>
               </TabList>
 
-              <TabPanel>
-                <h2>Any content 1</h2>
+              <TabPanel style={{ height: "15em" }}>
+                <MyMap style={{ height: "inherit" }} />
               </TabPanel>
               <TabPanel>
                 <h2>Any content 2</h2>
