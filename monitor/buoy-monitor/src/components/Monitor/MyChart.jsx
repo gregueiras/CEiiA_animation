@@ -46,10 +46,15 @@ class App extends Component {
         const newPoint = []
         let inc = Math.random() < 0.5 ? 1 : -1
 
-        newPoint.push(lastTime + (lastTime - last2Time))
-        newPoint.push(lastValue + (lastValue - last2Value) * inc)
+        const newTime = lastTime + (lastTime - last2Time)
+        const newValue = lastValue + (lastValue - last2Value) * inc;
 
-        const newData = data.slice(0) // Clone
+        newPoint.push(newTime)
+        newPoint.push(newValue)
+
+        console.log(newTime, newValue)
+
+        const newData = data.slice(1) // 0 to Add, 1 to Delete Oldest Record
         newData.push(newPoint)
         return newData
       }
@@ -65,7 +70,7 @@ class App extends Component {
   handleStartLiveUpdate(e) {
     e && e.preventDefault()
     this.setState({
-      liveUpdate: window.setInterval(this.updateLiveData, 5000),
+      liveUpdate: window.setInterval(this.updateLiveData, 1000),
     })
   }
 
