@@ -1,6 +1,6 @@
 import React from "react"
 import { Responsive, WidthProvider } from "react-grid-layout"
-import Monitor from "src/components/Monitor"
+import Monitor from "./Monitor"
 import { O2, Misc, charts } from "data/dataB1"
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
